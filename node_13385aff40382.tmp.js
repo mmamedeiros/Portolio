@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.get('/', function(req,res){
 
-    res.sendFile(path.join(__dirname+"/pages/home.html"))
+    res.sendFile(path.join(__dirname+"/pages/index.html"))
 })
 
 app.use('/', router);
