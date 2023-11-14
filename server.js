@@ -1,19 +1,16 @@
-const express = require('express');
-const app = express();
-const path = require('path');
-const router = express.Router();
+const express = require("express"); // requerido o express - ele já entende que o ejs já está numa pasta views
+const app = express(); // instanceado o express na const app
 
-router.get('/', function (req, res) {
-    res.sendFile(path.join(__dirname, 'pages', 'index.html'));
+app.set("view engine", "ejs"); // .set chama a tag express
+
+app.get("/", function (req, res) {
+  // "res" = response; req = reqerir
+  // app.get cria uma rota para rodar nosso index ; "/" é o nosso dominio
+ 
+  res.render('/index');
 });
 
-app.use('/', router);
-app.listen(process.env.PORT || 3000);
-console.log('Servidor rodando');
 
-app.use(express.static(path.join(__dirname, 'public')));
 
-// Rota para servir a imagem
-app.get('/src', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'imagens', 'minha_imagem.jpg'));
-});
+app.listen(8080);
+console.log("SERVIDOR RODANDO");
